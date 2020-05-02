@@ -1,0 +1,6 @@
+framework module GENCommon {
+  umbrella header "GENCommon.h"
+
+  export *
+  module * { export * }
+}

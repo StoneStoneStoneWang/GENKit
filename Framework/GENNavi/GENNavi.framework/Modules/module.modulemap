@@ -1,0 +1,6 @@
+framework module GENNavi {
+  umbrella header "GENNavi.h"
+
+  export *
+  module * { export * }
+}

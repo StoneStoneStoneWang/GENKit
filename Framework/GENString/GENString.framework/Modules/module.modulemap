@@ -1,0 +1,6 @@
+framework module GENString {
+  umbrella header "GENString.h"
+
+  export *
+  module * { export * }
+}

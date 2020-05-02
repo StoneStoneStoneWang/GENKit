@@ -1,0 +1,6 @@
+framework module GENColor {
+  umbrella header "GENColor.h"
+
+  export *
+  module * { export * }
+}

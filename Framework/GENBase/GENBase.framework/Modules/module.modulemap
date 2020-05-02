@@ -1,0 +1,6 @@
+framework module GENBase {
+  umbrella header "GENBase.h"
+
+  export *
+  module * { export * }
+}
