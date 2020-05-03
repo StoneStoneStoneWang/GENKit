@@ -1,6 +1,6 @@
 //
-//  FBObserverReq.swift
-//  FBObserverReq
+//  GENObserverReq.swift
+//  GENObserverReq
 //
 //  Created by 王磊 on 2020/4/16.
 //  Copyright © 2020 王磊. All rights reserved.
@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-public protocol FBObservableReq {
+public protocol GENObservableReq {
     /*
      reqName 请求接口名 如 app/user/v1/login
      */

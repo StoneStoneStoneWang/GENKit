@@ -1,6 +1,6 @@
 //
-//  FBError.swift
-//  FBError
+//  GENError.swift
+//  GENError
 //
 //  Created by 王磊 on 2020/4/16.
 //  Copyright © 2020 王磊. All rights reserved.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum FBError: Error {
+public enum GENError: Error {
     
     case HTTPFailed(_ error: Error)
     
@@ -17,7 +17,7 @@ public enum FBError: Error {
     case ServerResponseError(_ msg: String)
 }
 
-extension FBError {
+extension GENError {
     
     public var description: (String,Error?) {
         

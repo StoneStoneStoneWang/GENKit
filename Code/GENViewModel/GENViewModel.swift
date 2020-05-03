@@ -1,6 +1,6 @@
 //
-//  FBViewModel.swift
-//  FBViewModel
+//  GENViewModel.swift
+//  GENViewModel
 //
 //  Created by 王磊 on 2020/4/16.
 //  Copyright © 2020 王磊. All rights reserved.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol FBViewModel {
+public protocol GENViewModel {
     
     associatedtype WLInput
     associatedtype WLOutput

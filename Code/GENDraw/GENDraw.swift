@@ -9,20 +9,20 @@
 import Foundation
 import UIKit
 
-@objc public enum FBDrawType: Int {
+@objc public enum GENDrawType: Int {
     
     case shape
 }
 
-@objc (FBDrawView)
-public final class FBDrawView: UIView {
+@objc (GENDrawView)
+public final class GENDrawView: UIView {
     
-    @objc public static func createDraw(_ drawType: FBDrawType) -> FBDrawView {
+    @objc public static func createDraw(_ drawType: GENDrawType) -> GENDrawView {
         
         return Self.init(drawType)
     }
     
-    private var drawType: FBDrawType = .shape
+    private var drawType: GENDrawType = .shape
     
     @objc public var drawRadius: CGFloat = 20
     
@@ -34,7 +34,7 @@ public final class FBDrawView: UIView {
             setNeedsDisplay()
         }
     }
-    private convenience init(_ drawType: FBDrawType) {
+    private convenience init(_ drawType: GENDrawType) {
         self.init(frame: .zero)
     }
     private override init(frame: CGRect) {
@@ -46,7 +46,7 @@ public final class FBDrawView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 }
-extension FBDrawView {
+extension GENDrawView {
     
     override public func draw(_ rect: CGRect) {
         super.draw(rect)

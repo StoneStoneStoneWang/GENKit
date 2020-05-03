@@ -1,6 +1,6 @@
 //
-//  EDTObservableMapper.swift
-//  EDTObservableMapper
+//  GENObservableMapper.swift
+//  GENObservableMapper
 //
 //  Created by 王磊 on 2020/4/16.
 //  Copyright © 2020 王磊. All rights reserved.
@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import ObjectMapper
 
-public enum EDTMapperError: Error {
+public enum GENMapperError: Error {
     
     case parsingError
 }
@@ -24,7 +24,7 @@ extension Observable where Element:Any {
         
         return self.map { (element) -> T in
             guard let parsedElement = mapper.map(JSONObject: element) else {
-                throw EDTMapperError.parsingError
+                throw GENMapperError.parsingError
             }
             
             return parsedElement
@@ -37,7 +37,7 @@ extension Observable where Element:Any {
         
         return self.map { (element) -> [T] in
             guard let parsedArray = mapper.mapArray(JSONObject: element) else {
-                throw EDTMapperError.parsingError
+                throw GENMapperError.parsingError
             }
             
             return parsedArray
