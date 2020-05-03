@@ -321,6 +321,7 @@ Pod::Spec.new do |spec|
       bridge.dependency 'RxDataSources'
       bridge.dependency 'GENBridge/Base'
       bridge.dependency 'GENHud'
+      bridge.dependency 'GENTextView'
     end
   end
   

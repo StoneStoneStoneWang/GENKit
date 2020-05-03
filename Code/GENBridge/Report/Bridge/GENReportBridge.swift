@@ -13,6 +13,7 @@ import GENCocoa
 import GENHud
 import RxCocoa
 import RxSwift
+import GENTextView
 
 @objc (GENReportBridge)
 public final class GENReportBridge: GENBaseBridge {
@@ -30,7 +31,7 @@ public final class GENReportBridge: GENBaseBridge {
 
 extension GENReportBridge {
     
-    @objc public func createReport(_ vc: GENTableNoLoadingViewController ,reports: [[String: Any]],uid: String,encoded: String ,textView: UITextView ,reportAction: @escaping () -> ()) {
+    @objc public func createReport(_ vc: GENTableNoLoadingViewController ,reports: [[String: Any]],uid: String,encoded: String ,textView: GENTextView ,reportAction: @escaping () -> ()) {
         
         if let completeItem = vc.navigationItem.rightBarButtonItem?.customView as? UIButton {
             
@@ -43,7 +44,7 @@ extension GENReportBridge {
                                                  uid: uid,
                                                  encode: encoded,
                                                  report: selectedReport.asDriver(),
-                                                 content: textView.rx.text.orEmpty.asDriver())
+                                                 content: textView.textView.rx.text.orEmpty.asDriver())
             
             viewModel = GENReportViewModel(input, disposed: disposed)
             
