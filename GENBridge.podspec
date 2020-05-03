@@ -63,7 +63,7 @@ Pod::Spec.new do |spec|
     protocol.subspec 'Bridge' do |bridge|
       bridge.source_files = "Code/GENBridge/Protocol/Bridge/*.{swift}"
       bridge.dependency 'GENBridge/Protocol/VM'
-      bridge.dependency 'GENTextInner'
+      bridge.dependency 'GENInner'
       bridge.dependency 'GENBridge/Base'
     end
   end

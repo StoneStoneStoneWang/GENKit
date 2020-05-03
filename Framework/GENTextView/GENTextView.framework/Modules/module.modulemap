@@ -1,0 +1,6 @@
+framework module GENTextView {
+  umbrella header "GENTextView.h"
+
+  export *
+  module * { export * }
+}
