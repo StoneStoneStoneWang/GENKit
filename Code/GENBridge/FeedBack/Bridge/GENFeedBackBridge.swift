@@ -11,6 +11,7 @@ import RxCocoa
 import RxSwift
 import GENBase
 import GENHud
+import GENTextView
 
 public typealias GENFeedBackAction = () -> ()
 
@@ -22,9 +23,9 @@ public final class GENFeedBackBridge: GENBaseBridge {
 
 extension GENFeedBackBridge {
     
-    @objc public func createFeedBack(_ vc: GENBaseViewController ,feedBackAction: @escaping GENFeedBackAction ) {
+    @objc public func createFeedBack(_ vc: GENBaseViewController ,textView: GENTextView,feedBackAction: @escaping GENFeedBackAction ) {
         
-        if let feedBack = vc.view.viewWithTag(201) as? UITextView ,let placeholder = vc.view.viewWithTag(202) ,let phone = vc.view.viewWithTag(203) as? UITextField{
+        if let phone = vc.view.viewWithTag(203) as? UITextField {
             
             var completeItem: UIButton!
             
@@ -39,7 +40,7 @@ extension GENFeedBackBridge {
             
             if let completeItem = completeItem {
                 
-                let inputs = GENFeedBackViewModel.WLInput(feedBack: feedBack.rx.text.orEmpty.asDriver(),
+                let inputs = GENFeedBackViewModel.WLInput(feedBack: textView.textView.rx.text.orEmpty.asDriver(),
                                                           phone: phone.rx.text.orEmpty.asDriver(),
                                                           completTaps: completeItem.rx.tap.asSignal())
                 
@@ -85,11 +86,6 @@ extension GENFeedBackBridge {
                     })
                     .disposed(by: disposed)
                 
-                viewModel
-                    .output
-                    .placeholderHidden
-                    .drive(placeholder.rx.isHidden)
-                    .disposed(by: disposed)
             }
         }
     }

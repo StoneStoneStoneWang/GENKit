@@ -40,8 +40,6 @@ struct GENSignatureViewModel: GENViewModel {
         let completing: Driver<Void>
         
         let completed: Driver<GENResult>
-        
-        let placeholderHidden: Driver<Bool>
     }
     
     init(_ input: WLInput) {
@@ -62,8 +60,6 @@ struct GENSignatureViewModel: GENViewModel {
                 .map { GENResult.updateUserInfoSucc($0, msg: "个性签名修改成功")}
                 .asDriver(onErrorRecover: { return Driver.just(GENResult.failed(($0 as! GENError).description.0)) }) })
         
-        let placeholderHidden: Driver<Bool> = input.updated.flatMapLatest { Driver.just(!$0.wl_isEmpty)}
-        
-        self.output = WLOutput(completeEnabled: completEnabled, completing: completing, completed: completed, placeholderHidden: placeholderHidden)
+        self.output = WLOutput(completeEnabled: completEnabled, completing: completing, completed: completed)
     }
 }

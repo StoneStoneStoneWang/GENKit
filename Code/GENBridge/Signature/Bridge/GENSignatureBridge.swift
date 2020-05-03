@@ -12,6 +12,7 @@ import RxSwift
 import GENBase
 import GENHud
 import GENCache
+import GENTextView
 
 @objc(GENSignatureActionType)
 public enum GENSignatureActionType: Int ,Codable {
@@ -33,15 +34,15 @@ public final class GENSignatureBridge: GENBaseBridge {
 
 extension GENSignatureBridge {
     
-    @objc public func createSignature(_ vc: GENBaseViewController ,signatureAction: @escaping GENSignatureAction ) {
+    @objc public func createSignature(_ vc: GENBaseViewController ,textView: GENTextView,signatureAction: @escaping GENSignatureAction ) {
         
-        if let completeItem = vc.navigationItem.rightBarButtonItem?.customView as? UIButton ,let signaturetv = vc.view.viewWithTag(201) as? UITextView ,let backItem = vc.navigationItem.leftBarButtonItem?.customView as? UIButton ,let placeholder = vc.view.viewWithTag(202) {
+        if let completeItem = vc.navigationItem.rightBarButtonItem?.customView as? UIButton,let backItem = vc.navigationItem.leftBarButtonItem?.customView as? UIButton {
             
             let inputs = GENSignatureViewModel.WLInput(orignal: signature.asDriver(),
-                                                       updated: signaturetv.rx.text.orEmpty.asDriver(),
+                                                       updated: textView.textView.rx.text.orEmpty.asDriver(),
                                                        completTaps: completeItem.rx.tap.asSignal())
             
-            signaturetv.text = signature.value
+            textView.textView.text = signature.value
             
             viewModel = GENSignatureViewModel(inputs)
             
@@ -58,7 +59,7 @@ extension GENSignatureBridge {
                     
                     GENHud.show(withStatus: "修改个性签名...")
                     
-                    signaturetv.resignFirstResponder()
+                    vc.view.endEditing(true)
                 })
                 .disposed(by: disposed)
             
@@ -92,12 +93,6 @@ extension GENSignatureBridge {
                     
                     signatureAction(.back)
                 })
-                .disposed(by: disposed)
-            
-            viewModel
-                .output
-                .placeholderHidden
-                .drive(placeholder.rx.isHidden)
                 .disposed(by: disposed)
         }
     }

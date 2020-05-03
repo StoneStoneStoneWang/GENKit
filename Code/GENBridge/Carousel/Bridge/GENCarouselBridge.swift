@@ -27,37 +27,25 @@ public final class GENCarouselBridge: GENBaseBridge {
     var dataSource: RxCollectionViewSectionedReloadDataSource<Section>!
     
     var vc: GENCollectionNoLoadingViewController!
+    
+    var pageControl: UIPageControl?
 }
 
-// MARK: skip item 101 pagecontrol 102
+// MARK: pagecontrol 102
 extension GENCarouselBridge {
     
-    @objc public func createCarousel(_ vc: GENCollectionNoLoadingViewController ,canPageHidden: Bool ,canTimerResp: Bool,carousels: [[String: String]] ,carouseAction: @escaping GENCarouselAction) {
+    @objc public func createCarousel(_ vc: GENCollectionNoLoadingViewController ,carouseAction: @escaping GENCarouselAction) {
         
         if let pageControl = vc.view.viewWithTag(102) as? UIPageControl {
             
-            pageControl.numberOfPages = carousels.count
+            self.pageControl = pageControl
             
             self.vc = vc
             
-            let input = GENCarouselViewModel.WLInput(contentoffSetX: vc.collectionView.rx.contentOffset.map({ $0.x }),
-                                                     modelSelect: vc.collectionView.rx.modelSelected(GENCarouselBean.self),
-                                                     itemSelect: vc.collectionView.rx.itemSelected,
-                                                     canTimerResp: canTimerResp,
-                                                     currentPage: BehaviorRelay<Int>(value: 0),
-                                                     carouselCount: carousels.count)
+            let input = GENCarouselViewModel.WLInput(modelSelect: vc.collectionView.rx.modelSelected(GENCarouselBean.self),
+                                                     itemSelect: vc.collectionView.rx.itemSelected)
             
             viewModel = GENCarouselViewModel(input, disposed: disposed)
-            
-            var result : [GENCarouselBean] = []
-            
-            for carousel in carousels {
-                
-                let c = GENCarouselBean(JSON: carousel)!
-                
-                result += [c]
-                
-            }
             
             let dataSource = RxCollectionViewSectionedReloadDataSource<Section>(
                 configureCell: { ds, cv, ip, item in return vc.configCollectionViewCell(item, for: ip)})
@@ -83,21 +71,28 @@ extension GENCarouselBridge {
             
             viewModel
                 .output
-                .timered
-                .subscribe(onNext: { [unowned self] (index) in
-                    
-                    if !self.viewModel.output.tableData.value.isEmpty {
-                        
-                        vc.collectionView.selectItem(at: IndexPath(item: index, section:0), animated: true, scrollPosition: .centeredHorizontally)
-                    }
-                })
-                .disposed(by: disposed)
-            
-            viewModel
-                .output
                 .currentPage
                 .bind(to: pageControl.rx.currentPage)
                 .disposed(by: disposed)
+            
+        }
+    }
+    
+    @objc public func setCarousels(_ carousels: [[String: String]]) {
+        
+        if let pageControl = pageControl {
+            
+            pageControl.numberOfPages = carousels.count
+            
+            var result : [GENCarouselBean] = []
+            
+            for carousel in carousels {
+                
+                let c = GENCarouselBean(JSON: carousel)!
+                
+                result += [c]
+                
+            }
             
             var mutable: [GENCarouselBean] = []
             
@@ -111,30 +106,11 @@ extension GENCarouselBridge {
                 .tableData
                 .accept(mutable)
         }
+        
+    }
+    
+    @objc public func setCurrentPage(_ page: Int) {
+    
+        viewModel.output.currentPage.accept(page)
     }
 }
-
-//extension GENCarouselBridge: UICollectionViewDelegate {
-//
-//    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//
-//        DispatchQueue.main.async {
-//
-//            let floatx = scrollView.contentOffset.x / WL_SCREEN_WIDTH
-//
-//            let intx = floor(floatx)
-//
-//            if floatx + 0.5 >= intx {
-//
-//                self.vc.collectionView.selectItem(at: IndexPath(item: Int(scrollView.contentOffset.x / WL_SCREEN_WIDTH) + 1, section:0), animated: true, scrollPosition: .centeredHorizontally)
-//
-//            } else if floatx - 0.5 <= intx {
-//
-//                self.vc.collectionView.selectItem(at: IndexPath(item: Int(scrollView.contentOffset.x / WL_SCREEN_WIDTH) - 1, section:0), animated: true, scrollPosition: .centeredHorizontally)
-//            } else {
-//
-//                self.vc.collectionView.selectItem(at: IndexPath(item: Int(scrollView.contentOffset.x / WL_SCREEN_WIDTH), section:0), animated: true, scrollPosition: .centeredHorizontally)
-//            }
-//        }
-//    }
-//}

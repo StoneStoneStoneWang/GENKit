@@ -37,8 +37,6 @@ struct GENFeedBackViewModel: GENViewModel {
         let completing: Driver<Void>
         
         let completed: Driver<GENResult>
-        
-        let placeholderHidden: Driver<Bool>
     }
     
     init(_ input: WLInput) {
@@ -59,8 +57,6 @@ struct GENFeedBackViewModel: GENViewModel {
                     .map { _ in GENResult.ok("意见建议提交成功")}
                     .asDriver(onErrorRecover: { return Driver.just(GENResult.failed(($0 as! GENError).description.0)) }) })
         
-        let placeholderHidden: Driver<Bool> = input.feedBack.flatMapLatest { Driver.just(!$0.wl_isEmpty)}
-        
-        self.output = WLOutput(completeEnabled: completEnabled, completing: completing, completed: completed, placeholderHidden: placeholderHidden)
+        self.output = WLOutput(completeEnabled: completEnabled, completing: completing, completed: completed)
     }
 }

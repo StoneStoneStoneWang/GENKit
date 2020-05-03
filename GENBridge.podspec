@@ -243,6 +243,7 @@ Pod::Spec.new do |spec|
       bridge.source_files = "Code/GENBridge/Signature/Bridge/*.{swift}"
       bridge.dependency 'GENBridge/Signature/VM'
       bridge.dependency 'GENHud'
+      bridge.dependency 'GENTextView'
       bridge.dependency 'GENBase'
       bridge.dependency 'GENBridge/Base'
     end
@@ -440,6 +441,7 @@ Pod::Spec.new do |spec|
     feedBack.subspec 'Bridge' do |bridge|
       bridge.source_files = "Code/GENBridge/FeedBack/Bridge/*.{swift}"
       bridge.dependency 'GENBridge/FeedBack/VM'
+      bridge.dependency 'GENTextView'
       bridge.dependency 'GENHud'
       bridge.dependency 'GENBase'
       bridge.dependency 'GENBridge/Base'
