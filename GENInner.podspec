@@ -5,7 +5,7 @@ Pod::Spec.new do |spec|
   spec.version      = "0.0.1"
   spec.summary      = "A Lib For inner."
   spec.description  = <<-DESC
-  GENInner是内置浏览器封装
+  GENInner是富文本
   DESC
   
   spec.homepage     = "https://github.com/StoneStoneStoneWang/GENKit.git"

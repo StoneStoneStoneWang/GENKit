@@ -1,0 +1,6 @@
+framework module GENTab {
+  umbrella header "GENTab.h"
+
+  export *
+  module * { export * }
+}

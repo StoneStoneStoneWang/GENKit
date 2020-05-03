@@ -1,0 +1,6 @@
+framework module GENTable {
+  umbrella header "GENTable.h"
+
+  export *
+  module * { export * }
+}

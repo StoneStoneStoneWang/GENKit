@@ -1,0 +1,6 @@
+framework module GENInner {
+  umbrella header "GENInner.h"
+
+  export *
+  module * { export * }
+}

@@ -28,4 +28,6 @@ Pod::Spec.new do |spec|
   
   spec.dependency 'GENTransition'
   
+  spec.dependency 'GENImage'
+  
 end

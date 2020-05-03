@@ -1,0 +1,6 @@
+framework module GENCollection {
+  umbrella header "GENCollection.h"
+
+  export *
+  module * { export * }
+}
