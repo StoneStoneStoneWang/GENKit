@@ -1,0 +1,6 @@
+framework module GENAMap {
+  umbrella header "GENAMap.h"
+
+  export *
+  module * { export * }
+}

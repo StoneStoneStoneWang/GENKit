@@ -1,0 +1,6 @@
+framework module GENCalendar {
+  umbrella header "GENCalendar.h"
+
+  export *
+  module * { export * }
+}
