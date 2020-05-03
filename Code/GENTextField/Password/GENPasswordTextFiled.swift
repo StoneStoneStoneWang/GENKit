@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-@objc (FBPasswordImageTextFiled)
-public final class FBPasswordImageTextFiled: FBLeftImageTextField {
+@objc (GENPasswordImageTextFiled)
+public final class GENPasswordImageTextFiled: GENLeftImageTextField {
     
     @objc (passwordItem)
     public final let passwordItem: UIButton = UIButton(type: .custom)
@@ -51,19 +51,19 @@ public final class FBPasswordImageTextFiled: FBLeftImageTextField {
     public override func commitInit() {
         super.commitInit()
         
-        FB_rightViewMode(.always)
+        GEN_rightViewMode(.always)
     
-        FB_editType(.secret)
+        GEN_editType(.secret)
         
-        FB_maxLength(18)
+        GEN_maxLength(18)
         
-        FB_secureTextEntry(true)
+        GEN_secureTextEntry(true)
         
     }
 }
 
-@objc (FBPasswordTitleTextFiled)
-public final class FBPasswordTitleTextFiled: FBLeftTitleTextField {
+@objc (GENPasswordTitleTextFiled)
+public final class GENPasswordTitleTextFiled: GENLeftTitleTextField {
     
     @objc (passwordItem)
     public final let passwordItem: UIButton = UIButton(type: .custom)
@@ -103,15 +103,15 @@ public final class FBPasswordTitleTextFiled: FBLeftTitleTextField {
     public override func commitInit() {
         super.commitInit()
         
-        FB_rightViewMode(.always)
+        GEN_rightViewMode(.always)
         
-        FB_rightView(passwordItem)
+        GEN_rightView(passwordItem)
         
-        FB_editType(.secret)
+        GEN_editType(.secret)
         
-        FB_maxLength(18)
+        GEN_maxLength(18)
         
-        FB_secureTextEntry(true)
+        GEN_secureTextEntry(true)
         
     }
 }

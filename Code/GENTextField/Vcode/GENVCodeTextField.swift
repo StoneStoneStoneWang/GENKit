@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 import WLToolsKit
 
-@objc (FBVCodeImageTextField)
-public final class FBVCodeImageTextField: FBLeftImageTextField {
+@objc (GENVCodeImageTextField)
+public final class GENVCodeImageTextField: GENLeftImageTextField {
     
     public final let vcodeItem: UIButton = UIButton(type: .custom).then {
         
@@ -30,16 +30,16 @@ public final class FBVCodeImageTextField: FBLeftImageTextField {
     public override func commitInit() {
         super.commitInit()
         
-        FB_rightViewMode(.always)
+        GEN_rightViewMode(.always)
         
-        FB_rightView(vcodeItem)
+        GEN_rightView(vcodeItem)
         
         vcodeItem.sizeToFit()
     }
 }
 
-@objc (FBVCodeTitleTextField)
-public final class FBVCodeTitleTextField: FBLeftTitleTextField {
+@objc (GENVCodeTitleTextField)
+public final class GENVCodeTitleTextField: GENLeftTitleTextField {
     
     public final let vcodeItem: UIButton = UIButton(type: .custom).then {
         
@@ -58,9 +58,9 @@ public final class FBVCodeTitleTextField: FBLeftTitleTextField {
     public override func commitInit() {
         super.commitInit()
         
-        FB_rightViewMode(.always)
+        GEN_rightViewMode(.always)
         
-        FB_rightView(vcodeItem)
+        GEN_rightView(vcodeItem)
         
         vcodeItem.sizeToFit()
     }

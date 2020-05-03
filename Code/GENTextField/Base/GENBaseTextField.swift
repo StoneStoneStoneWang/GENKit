@@ -1,5 +1,5 @@
 //
-//  FBBaseTextField.swift
+//  GENBaseTextField.swift
 //  WLTFKit_Swift
 //
 //  Created by three stone 王 on 2018/11/14.
@@ -18,22 +18,22 @@ import UIKit
 //非英文或数字：[^A-Za-z0-9]
 //非因为或数字或下划线：[^A-Za-z0-9_]
 
-public let FB_TOPLINE_TAG: Int = 1001
+public let GEN_TOPLINE_TAG: Int = 1001
 
-public let FB_BOTTOMLINE_TAG: Int = 1002
+public let GEN_BOTTOMLINE_TAG: Int = 1002
 
-fileprivate let FB_DOTAFTER_COUNT: Int = 2
+fileprivate let GEN_DOTAFTER_COUNT: Int = 2
 
-fileprivate let FB_NUMBER_PARTTERN: String = "^[0-9]*$"
+fileprivate let GEN_NUMBER_PARTTERN: String = "^[0-9]*$"
 
-fileprivate let FB_NUMBERANDCHAR_PARTTERN: String = "^[0-9a-zA-Z]*$"
+fileprivate let GEN_NUMBERANDCHAR_PARTTERN: String = "^[0-9a-zA-Z]*$"
 
-fileprivate let FB_ZH_CN: String = "[^\\u4E00-\\u9FA5]"
+fileprivate let GEN_ZH_CN: String = "[^\\u4E00-\\u9FA5]"
 
-fileprivate typealias FBTextChanged = (FBBaseTextField) -> ()
+fileprivate typealias GENTextChanged = (GENBaseTextField) -> ()
 
-@objc (FBBaseTextField)
-open class FBBaseTextField: UITextField {
+@objc (GENBaseTextField)
+open class GENBaseTextField: UITextField {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -48,7 +48,7 @@ open class FBBaseTextField: UITextField {
     // MARK: topline
     fileprivate lazy var topLine: UIView = UIView().then {
         
-        $0.tag = FB_TOPLINE_TAG
+        $0.tag = GEN_TOPLINE_TAG
     }
     
     fileprivate var topLineFrame: CGRect = .zero {
@@ -70,7 +70,7 @@ open class FBBaseTextField: UITextField {
     // MARK: bottomLine
     fileprivate lazy var bottomLine: UIView = UIView().then {
         
-        $0.tag = FB_BOTTOMLINE_TAG
+        $0.tag = GEN_BOTTOMLINE_TAG
     }
     
     fileprivate var bottomLineFrame: CGRect = .zero  {
@@ -92,7 +92,7 @@ open class FBBaseTextField: UITextField {
     // MARK: maxLength 默认Int.max
     fileprivate var maxLength: Int = Int.max
     // MARK: 编辑类型 详情参考 枚举
-    fileprivate var editType: FBTextFiledEditType = .phone {
+    fileprivate var editType: GENTextFiledEditType = .phone {
         
         willSet {
             switch newValue {
@@ -101,7 +101,7 @@ open class FBBaseTextField: UITextField {
             case .vcode_Length4:
                 fallthrough
             case .vcode_length6:
-                pattern = FB_NUMBER_PARTTERN
+                pattern = GEN_NUMBER_PARTTERN
                 
                 keyboardType = .phonePad
             case .priceEdit:
@@ -112,14 +112,14 @@ open class FBBaseTextField: UITextField {
                 keyboardType = .decimalPad
             case .secret:
                 
-                pattern = FB_NUMBERANDCHAR_PARTTERN
+                pattern = GEN_NUMBERANDCHAR_PARTTERN
                 
                 keyboardType = .asciiCapable
             case .defineLength:
                 
                 NotificationCenter
                     .default
-                    .addObserver(self, selector: #selector(greetingTextFieldChanged), name: NSNotification.Name(rawValue: "UITextFieldTextDidChangeNotifiFBion"), object: self)
+                    .addObserver(self, selector: #selector(greetingTextFieldChanged), name: NSNotification.Name(rawValue: "UITextFieldTextDidChangeNotifiGENion"), object: self)
                 
                 maxLength = 10
                 
@@ -128,7 +128,7 @@ open class FBBaseTextField: UITextField {
                 
                 NotificationCenter
                     .default
-                    .addObserver(self, selector: #selector(greetingTextFieldChanged), name: NSNotification.Name(rawValue: "UITextFieldTextDidChangeNotifiFBion"), object: self)
+                    .addObserver(self, selector: #selector(greetingTextFieldChanged), name: NSNotification.Name(rawValue: "UITextFieldTextDidChangeNotifiGENion"), object: self)
                 keyboardType = .default
             case .default:
                 
@@ -138,7 +138,7 @@ open class FBBaseTextField: UITextField {
                 
             case .asii:
                 
-                pattern = FB_NUMBERANDCHAR_PARTTERN
+                pattern = GEN_NUMBERANDCHAR_PARTTERN
                 
                 keyboardType = .asciiCapable
                 
@@ -149,19 +149,19 @@ open class FBBaseTextField: UITextField {
     
     deinit {
         
-        NotificationCenter.default.removeObserver(self, name:NSNotification.Name(rawValue: "UITextFieldTextDidChangeNotifiFBion"), object: self)
+        NotificationCenter.default.removeObserver(self, name:NSNotification.Name(rawValue: "UITextFieldTextDidChangeNotifiGENion"), object: self)
     }
     
     // MARK: 限制输入的正则表达式字符串
     //  参考文献 https://www.jianshu.com/p/ee27e37bd079
     fileprivate var pattern: String = ""
     // MARK: 文本变化回调（observer为UITextFiled）
-    fileprivate var textChanged: FBTextChanged!
+    fileprivate var textChanged: GENTextChanged!
     
     
 }
 
-extension FBBaseTextField {
+extension GENBaseTextField {
     @objc (commitInit)
     open func commitInit() {
         
@@ -186,10 +186,10 @@ extension FBBaseTextField {
 }
 
 /** 文本框内容 样式 */
-extension FBBaseTextField {
-    @objc (FBTextFiledEditType)
-    public enum FBTextFiledEditType: Int {
-        @objc (FBTextFiledEditTypepriceEdit)
+extension GENBaseTextField {
+    @objc (GENTextFiledEditType)
+    public enum GENTextFiledEditType: Int {
+        @objc (GENTextFiledEditTypepriceEdit)
         case priceEdit
         /** 手机号 默认判断是长度11位 首位为1的+86手机号 如果是复制过去的 加入了-处理机制 比如从通讯录复制*/
         case phone
@@ -212,71 +212,71 @@ extension FBBaseTextField {
         //        case `default` // 默认 这个在swift中弃用
     }
 }
-extension FBBaseTextField {
+extension GENBaseTextField {
     @objc (makeAttributeWithClosure:)
-    open func makeAttribute(_ closure: @escaping (FBBaseTextField) -> ()) {
+    open func makeAttribute(_ closure: @escaping (GENBaseTextField) -> ()) {
         
         closure(self)
     }
 }
 
 // 新增属性的处理
-extension FBBaseTextField {
-    @objc (FB_maxLength:)
-    public func FB_maxLength(_ maxLength: Int) {
+extension GENBaseTextField {
+    @objc (GEN_maxLength:)
+    public func GEN_maxLength(_ maxLength: Int) {
         
         self.maxLength = maxLength
     }
-    @objc (FB_editType:)
-    public func FB_editType(_ editType: FBTextFiledEditType) {
+    @objc (GEN_editType:)
+    public func GEN_editType(_ editType: GENTextFiledEditType) {
         
         self.editType = editType
     }
-    @objc (FB_pattern:)
-    public func FB_pattern(_ pattern: String) {
+    @objc (GEN_pattern:)
+    public func GEN_pattern(_ pattern: String) {
         
         self.pattern = pattern
     }
-    @objc (FB_textChanged:)
-    public func FB_textChanged(_ textChanged: @escaping (FBBaseTextField) -> ()) {
+    @objc (GEN_textChanged:)
+    public func GEN_textChanged(_ textChanged: @escaping (GENBaseTextField) -> ()) {
         
         self.textChanged = textChanged
     }
-    @objc (FB_topLineFrame:)
-    public func FB_topLineFrame(_ frame: CGRect) {
+    @objc (GEN_topLineFrame:)
+    public func GEN_topLineFrame(_ frame: CGRect) {
         
         topLineFrame = frame
     }
-    @objc (FB_bottomLineFrame:)
-    public func FB_bottomLineFrame(_ frame: CGRect) {
+    @objc (GEN_bottomLineFrame:)
+    public func GEN_bottomLineFrame(_ frame: CGRect) {
         
         bottomLineFrame = frame
     }
-    @objc (FB_topLineColor:)
-    public func FB_topLineColor(_ color: UIColor) {
+    @objc (GEN_topLineColor:)
+    public func GEN_topLineColor(_ color: UIColor) {
         
         topLineColor = color
     }
-    @objc (FB_bottomLineColor:)
-    public func FB_bottomLineColor(_ color: UIColor) {
+    @objc (GEN_bottomLineColor:)
+    public func GEN_bottomLineColor(_ color: UIColor) {
         
         bottomLineColor = color
     }
-    @objc (FB_secureTextEntry:)
-    public func FB_secureTextEntry(_ isSecureTextEntry: Bool) {
+    @objc (GEN_secureTextEntry:)
+    public func GEN_secureTextEntry(_ isSecureTextEntry: Bool) {
         
         self.isSecureTextEntry = isSecureTextEntry
     }
 }
 // MARK: UITextFieldDelegate
-extension FBBaseTextField {
+extension GENBaseTextField {
     
     open override func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        return __shouldChangeCharacters(target: textField as! FBBaseTextField,range: range,string: string)
+        return __shouldChangeCharacters(target: textField as! GENBaseTextField,range: range,string: string)
     }
     
-    private func __shouldChangeCharacters(target: FBBaseTextField , range: NSRange, string: String) -> Bool {
+    private func __shouldChangeCharacters(target: GENBaseTextField , range: NSRange, string: String) -> Bool {
         
         if editType == .defineLength || editType == .only_zh_cn || editType == .default {
             
@@ -342,7 +342,7 @@ extension FBBaseTextField {
 
 
 // MARK: textFieldDidChange
-extension FBBaseTextField {
+extension GENBaseTextField {
     @objc (greetingTextFieldChangedWithNoti:)
     open func greetingTextFieldChanged(obj: NSNotification) {
         
@@ -375,13 +375,13 @@ extension FBBaseTextField {
         }
     }
     
-    @objc open func textFieldDidChange(_ textField: FBBaseTextField) {
+    @objc open func textFieldDidChange(_ textField: GENBaseTextField) {
         
         __textDidChange(target: textField)
     }
     
     // MARK: editChanged
-    private func __textDidChange(target: FBBaseTextField) {
+    private func __textDidChange(target: GENBaseTextField) {
         
         switch target.editType {
         case .defineLength: break
@@ -400,7 +400,7 @@ extension FBBaseTextField {
                 }
                 //再判断长度
                 
-                if resultText.count > maxLength && target.value(forKey: "markFBextRange") == nil {
+                if resultText.count > maxLength && target.value(forKey: "markedTextRange") == nil {
                     
                     while resultText.count > maxLength {
                         
@@ -421,7 +421,7 @@ extension FBBaseTextField {
 }
 
 // MARK: editingRect and textRect rightViewRect leftViewRect
-extension FBBaseTextField {
+extension GENBaseTextField {
     
     
 }

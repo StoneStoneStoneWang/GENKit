@@ -1,5 +1,5 @@
 //
-//  FBLeftTitleTextField.swift
+//  GENLeftTitleTextField.swift
 //  TSTFKit_Swift
 //
 //  Created by three stone 王 on 2018/11/22.
@@ -9,8 +9,8 @@
 import UIKit
 import WLToolsKit
 
-@objc (FBLeftTitleTextField)
-open class FBLeftTitleTextField: FBBaseTextField {
+@objc (GENLeftTitleTextField)
+open class GENLeftTitleTextField: GENBaseTextField {
     
     open var leftTitleLabel: UILabel = UILabel()
     @objc (leftTitle)
@@ -50,9 +50,9 @@ open class FBLeftTitleTextField: FBBaseTextField {
     
 }
 
-extension FBLeftTitleTextField {
+extension GENLeftTitleTextField {
     
-    @objc open override func makeAttribute(_ closure: @escaping (FBLeftTitleTextField) -> ()) {
+    @objc open override func makeAttribute(_ closure: @escaping (GENLeftTitleTextField) -> ()) {
         
         closure(self)
     }

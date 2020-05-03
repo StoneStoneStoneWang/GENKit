@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-@objc (FBNickNameTextField)
-public final class FBNickNameTextField: FBBaseTextField {
+@objc (GENNickNameTextField)
+public final class GENNickNameTextField: GENBaseTextField {
     @objc (margin)
     public var margin: CGFloat = 15
     
@@ -31,6 +31,6 @@ public final class FBNickNameTextField: FBBaseTextField {
     public override func commitInit() {
         super.commitInit()
         
-        FB_editType(.default)
+        GEN_editType(.default)
     }
 }

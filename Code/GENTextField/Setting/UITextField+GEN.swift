@@ -10,67 +10,67 @@ import Foundation
 import UIKit
 
 extension UITextField {
-    @objc (FB_backgroundColor:)
-    public func FB_backgroundColor(_ color: UIColor) {
+    @objc (GEN_backgroundColor:)
+    public func GEN_backgroundColor(_ color: UIColor) {
         
         backgroundColor = color
     }
-    @objc (FB_font:)
-    public func FB_font(_ font: UIFont) {
+    @objc (GEN_font:)
+    public func GEN_font(_ font: UIFont) {
         
         self.font = font
     }
-    @objc (FB_textColor:)
-    public func FB_textColor(_ color: UIColor) {
+    @objc (GEN_textColor:)
+    public func GEN_textColor(_ color: UIColor) {
         
         textColor = color
     }
-    @objc (FB_textAlignment:)
-    public func FB_textAlignment(_ alignment: NSTextAlignment) {
+    @objc (GEN_textAlignment:)
+    public func GEN_textAlignment(_ alignment: NSTextAlignment) {
         
         textAlignment = alignment
     }
-    @objc (FB_keyboardType:)
-    public func FB_keyboardType(_ keyboardType: UIKeyboardType) {
+    @objc (GEN_keyboardType:)
+    public func GEN_keyboardType(_ keyboardType: UIKeyboardType) {
         
         self.keyboardType = keyboardType
     }
-    @objc (FB_clearButtonMode:)
-    public func FB_clearButtonMode(_ clearButtonMode: UITextField.ViewMode) {
+    @objc (GEN_clearButtonMode:)
+    public func GEN_clearButtonMode(_ clearButtonMode: UITextField.ViewMode) {
         
         self.clearButtonMode = clearButtonMode
         
     }
-    @objc (FB_returnKeyType:)
-    public func FB_returnKeyType(_ returnKeyType: UIReturnKeyType) {
+    @objc (GEN_returnKeyType:)
+    public func GEN_returnKeyType(_ returnKeyType: UIReturnKeyType) {
         
         self.returnKeyType = returnKeyType
     }
-    @objc (FB_rightViewMode:)
-    public func FB_rightViewMode(_ rightViewMode: UITextField.ViewMode) {
+    @objc (GEN_rightViewMode:)
+    public func GEN_rightViewMode(_ rightViewMode: UITextField.ViewMode) {
         
         self.rightViewMode = rightViewMode
     }
-    @objc (FB_leftViewMode:)
-    public func FB_leftViewMode(_ leftViewMode: UITextField.ViewMode) {
+    @objc (GEN_leftViewMode:)
+    public func GEN_leftViewMode(_ leftViewMode: UITextField.ViewMode) {
         
         self.leftViewMode = leftViewMode
     }
-    @objc (FB_leftView:)
-    public func FB_leftView(_ leftView: UIView) {
+    @objc (GEN_leftView:)
+    public func GEN_leftView(_ leftView: UIView) {
         
         self.leftView = leftView
     }
-    @objc (FB_rightView:)
-    public func FB_rightView(_ rightView: UIView) {
+    @objc (GEN_rightView:)
+    public func GEN_rightView(_ rightView: UIView) {
         
         self.rightView = rightView
     }
 }
 
-public typealias FBShouldReturn = () -> Bool
+public typealias GENShouldReturn = () -> Bool
 
-public typealias FBShouldClear = () -> Bool
+public typealias GENShouldClear = () -> Bool
 
 extension UITextField: UITextFieldDelegate {
     
@@ -79,18 +79,18 @@ extension UITextField: UITextFieldDelegate {
         return true
     }
     
-    fileprivate var shouldReturn: FBShouldReturn! {
+    fileprivate var shouldReturn: GENShouldReturn! {
         set {
             
             objc_setAssociatedObject(self, "shouldReturn", newValue, .OBJC_ASSOCIATION_COPY_NONATOMIC)
         }
         get {
             
-            return objc_getAssociatedObject(self, "shouldReturn") as? FBShouldReturn
+            return objc_getAssociatedObject(self, "shouldReturn") as? GENShouldReturn
         }
     }
-    @objc (FB_shouldReturn:)
-    public func FB_shouldReturn(_ shouldReturn: @escaping () -> Bool) {
+    @objc (GEN_shouldReturn:)
+    public func GEN_shouldReturn(_ shouldReturn: @escaping () -> Bool) {
         
         self.shouldReturn = shouldReturn
     }
@@ -105,7 +105,7 @@ extension UITextField: UITextFieldDelegate {
         return shouldReturn!()
     }
     
-    fileprivate var shouldClear: FBShouldClear! {
+    fileprivate var shouldClear: GENShouldClear! {
         
         set {
             
@@ -113,11 +113,11 @@ extension UITextField: UITextFieldDelegate {
         }
         get {
             
-            return objc_getAssociatedObject(self, "shouldClear") as? FBShouldClear
+            return objc_getAssociatedObject(self, "shouldClear") as? GENShouldClear
         }
     }
-    @objc (FB_shouldClear:)
-    public func FB_shouldClear(_ shouldClear: @escaping () -> Bool) {
+    @objc (GEN_shouldClear:)
+    public func GEN_shouldClear(_ shouldClear: @escaping () -> Bool) {
         
         self.shouldClear = shouldClear
     }

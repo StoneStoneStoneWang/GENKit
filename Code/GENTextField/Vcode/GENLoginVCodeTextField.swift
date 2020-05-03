@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-@objc (FBVCodeTextField)
-public final class FBVCodeTextField: FBLeftImageTextField {
+@objc (GENVCodeTextField)
+public final class GENVCodeTextField: GENLeftImageTextField {
     
     public final let vcodeItem: UIButton = UIButton(type: .custom).then {
         

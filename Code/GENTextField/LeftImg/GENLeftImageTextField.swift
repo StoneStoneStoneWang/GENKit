@@ -1,5 +1,5 @@
 //
-//  FBLeftImageTextField.swift
+//  GENLeftImageTextField.swift
 //  TSTFKit_Swift
 //
 //  Created by three stone 王 on 2018/11/22.
@@ -7,8 +7,8 @@
 //
 
 import UIKit
-@objc (FBLeftImageTextField)
-open class FBLeftImageTextField: FBBaseTextField {
+@objc (GENLeftImageTextField)
+open class GENLeftImageTextField: GENBaseTextField {
     
     fileprivate final let leftImageView: UIImageView = UIImageView()
     
@@ -50,10 +50,10 @@ open class FBLeftImageTextField: FBBaseTextField {
         return leftImageFrame
     }
 }
-extension FBLeftImageTextField {
+extension GENLeftImageTextField {
     
     
-    @objc open override func makeAttribute(_ closure: @escaping (FBLeftImageTextField) -> ()) {
+    @objc open override func makeAttribute(_ closure: @escaping (GENLeftImageTextField) -> ()) {
         
         closure(self)
     }
