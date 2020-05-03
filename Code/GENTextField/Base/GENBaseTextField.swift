@@ -159,7 +159,7 @@ open class GENBaseTextField: UITextField {
     fileprivate var textChanged: GENTextChanged!
     
     @objc (margin)
-    public var margin: CGFloat = 15
+    public var margin: CGFloat = 0
     
     override public func editingRect(forBounds bounds: CGRect) -> CGRect {
         
