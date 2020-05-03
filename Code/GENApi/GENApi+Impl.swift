@@ -7,12 +7,12 @@
 //
 
 import Foundation
-import FBObservableReq
+import GENObservableReq
 import Alamofire
 import WLToolsKit
-import FBSign
+import GENSign
 
-extension FBApi: FBObservableReq {
+extension GENApi: GENObservableReq {
     public var reqName: String {
         
         switch self {
@@ -98,7 +98,7 @@ extension FBApi: FBObservableReq {
         switch self {
         case let .login(phone, password: password): return ["phone": phone,"password": password,"platform": "1" ,"deviceId": DeviceId,"deviceModel": DeviceModel]
             
-        case let .smsCode(phone): return ["phone": phone,"signName":FBConfigure.fetchSmsSign(),"templateCode":FBConfigure.fetchSmsLogin()]
+        case let .smsCode(phone): return ["phone": phone,"signName":GENSign.fetchSmsSign(),"templateCode":GENSign.fetchSmsLogin()]
             
         case let .swiftLogin(phone, code): return ["phone":phone,"code":code,"platform":"1","deviceModel": DeviceModel]
             
@@ -110,53 +110,53 @@ extension FBApi: FBObservableReq {
             
         case let .updateUserInfo(key, value: value): return [key: value]
             
-        case let .smsPassword(phone): return ["phone": phone,"signName":FBConfigure.fetchSmsSign(),"templateCode":FBConfigure.fetchSmsPwd()]
+        case let .smsPassword(phone): return ["phone": phone,"signName":GENSign.fetchSmsSign(),"templateCode":GENSign.fetchSmsPwd()]
             
         case let .resettingPassword(phone, password: password, code: code): return ["phone": phone,"password": password,"platform": "1","code": code,"deviceModel": DeviceModel]
             
         case let .modifyPassword(oldPassword, password: password): return ["oldPassword": oldPassword,"password": password,"deviceModel": DeviceModel]
             
-        case .fetchBlackList: return ["projectId":FBConfigure.fetchAppKey()]
+        case .fetchBlackList: return ["projectId":GENSign.fetchAppKey()]
             
         case .aliToken: return [:]
             
-        case let .removeBlack(encoded): return ["projectId":FBConfigure.fetchAppKey(),"bt.encoded": encoded]
+        case let .removeBlack(encoded): return ["projectId":GENSign.fetchAppKey(),"bt.encoded": encoded]
             
-        case let .focus(OUsEncoded, targetEncoded: targetEncoded): return ["atn.OUsEncoded":OUsEncoded,"atn.targetEncoded":targetEncoded,"projectId": FBConfigure.fetchAppKey(),"atn.tableName":"Users"]
-        case let .fetchMyFocus(page): return ["page":page,"projectId": FBConfigure.fetchAppKey()]
+        case let .focus(OUsEncoded, targetEncoded: targetEncoded): return ["atn.OUsEncoded":OUsEncoded,"atn.targetEncoded":targetEncoded,"projectId": GENSign.fetchAppKey(),"atn.tableName":"Users"]
+        case let .fetchMyFocus(page): return ["page":page,"projectId": GENSign.fetchAppKey()]
             
-        case let .publish(tag,content: content): return ["cfs.tag":tag,"cfs.projectId":FBConfigure.fetchAppKey(),"cfs.content":content]
+        case let .publish(tag,content: content): return ["cfs.tag":tag,"cfs.projectId":GENSign.fetchAppKey(),"cfs.content":content]
             
-        case let .fetchList(tag, page: page): return ["cfs.tag":tag,"cfs.projectId":FBConfigure.fetchAppKey(),"page":page]
+        case let .fetchList(tag, page: page): return ["cfs.tag":tag,"cfs.projectId":GENSign.fetchAppKey(),"page":page]
             
-        case let .fetchMyList(tag, page: page): return ["cfs.tag":tag,"cfs.projectId":FBConfigure.fetchAppKey(),"page":page]
+        case let .fetchMyList(tag, page: page): return ["cfs.tag":tag,"cfs.projectId":GENSign.fetchAppKey(),"page":page]
             
         case let .fetchComments(page, targetEncoded: targetEncoded):
             
-            return ["comment.targetEncoded":targetEncoded,"page":page,"limit": 20,"projectId": FBConfigure.fetchAppKey()]
+            return ["comment.targetEncoded":targetEncoded,"page":page,"limit": 20,"projectId": GENSign.fetchAppKey()]
             
         case let .addComment(targetEncoded, content: content, tablename: tablename, type: type):
             
-            return ["comment.targetEncoded":targetEncoded,"comment.content":content,"comment.tableName": tablename,"comment.type": type,"projectId": FBConfigure.fetchAppKey()]
+            return ["comment.targetEncoded":targetEncoded,"comment.content":content,"comment.tableName": tablename,"comment.type": type,"projectId": GENSign.fetchAppKey()]
             
         case let .like(targetEncoded): return ["targetEncoded":targetEncoded]
             
         case let .report(OUsEncoded, targetEncoded: targetEncoded, type: type, content: content):
             
-            return ["rt.OUsEncoded":OUsEncoded,"rt.targetEncoded":targetEncoded,"rt.type": type,"rt.content": content,"rt.projectId": FBConfigure.fetchAppKey(),"rt.tableName": "CircleFriends"]
+            return ["rt.OUsEncoded":OUsEncoded,"rt.targetEncoded":targetEncoded,"rt.type": type,"rt.content": content,"rt.projectId": GENSign.fetchAppKey(),"rt.tableName": "CircleFriends"]
         case let .addBlack(OUsEncoded, targetEncoded: targetEncoded, content: content):
             
-            return ["bt.OUsEncoded":OUsEncoded,"bt.targetEncoded":targetEncoded,"bt.content": content,"projectId": FBConfigure.fetchAppKey(),"bt.tableName": "CircleFriends"]
+            return ["bt.OUsEncoded":OUsEncoded,"bt.targetEncoded":targetEncoded,"bt.content": content,"projectId": GENSign.fetchAppKey(),"bt.tableName": "CircleFriends"]
             
-        case let .attention(OUsEncoded, targetEncoded: targetEncoded): return ["atn.OUsEncoded":OUsEncoded,"atn.targetEncoded":targetEncoded,"projectId": FBConfigure.fetchAppKey(),"atn.tableName":"Users"]
+        case let .attention(OUsEncoded, targetEncoded: targetEncoded): return ["atn.OUsEncoded":OUsEncoded,"atn.targetEncoded":targetEncoded,"projectId": GENSign.fetchAppKey(),"atn.tableName":"Users"]
             
-        case let .fetchPublish(tag, page: page, userId: userId): return ["cfs.projectId":FBConfigure.fetchAppKey(),"cfs.tag": tag,"page": page,"userId": userId]
+        case let .fetchPublish(tag, page: page, userId: userId): return ["cfs.projectId":GENSign.fetchAppKey(),"cfs.tag": tag,"page": page,"userId": userId]
             
         case .fetchAddress: return [:]
             
         case let .deleteAddress(encode): return ["pe.encoded":encode]
             
-        case .fetchBanners: return ["cfs.tag":"","cfs.projectId":FBConfigure.fetchAppKey(),"page":1]
+        case .fetchBanners: return ["cfs.tag":"","cfs.projectId":GENSign.fetchAppKey(),"page":1]
             
         case let .editAddress(encode, name: name, phone: phone, plcl: plcl, plclne: plclne, city: city, cityne: cityne, region: region, regionne: regionne, addr: addr, isdef: isdef, zipCode: zipCode):
             
@@ -176,7 +176,7 @@ extension FBApi: FBObservableReq {
             
             return result
             
-        case .deleteMyCircle(let encode): return ["cfs.encoded": encode,"cfs.projectId":FBConfigure.fetchAppKey()]
+        case .deleteMyCircle(let encode): return ["cfs.encoded": encode,"cfs.projectId":GENSign.fetchAppKey()]
             
         case .fetchAreaJson: return [:]
             
@@ -195,17 +195,17 @@ extension FBApi: FBObservableReq {
             
         case .updateCircle(let tag, content: let content, encode: let encode):
             
-            return ["cfs.tag":tag,"cfs.projectId":FBConfigure.fetchAppKey(),"cfs.content":content,"cfs.encoded": encode]
+            return ["cfs.tag":tag,"cfs.projectId":GENSign.fetchAppKey(),"cfs.content":content,"cfs.encoded": encode]
             
         case .fetchSystemMsg(let page):
             
-            return ["projectId":FBConfigure.fetchAppKey(),"page":page,"limit":"10"]
+            return ["projectId":GENSign.fetchAppKey(),"page":page,"limit":"10"]
         case .fetchFirstMsg:
             
-            return ["projectId":FBConfigure.fetchAppKey(),"page":"1","limit":"1"]
+            return ["projectId":GENSign.fetchAppKey(),"page":"1","limit":"1"]
         case .readMsg(let id):
             
-            return ["projectId":FBConfigure.fetchAppKey(),"id":id]
+            return ["projectId":GENSign.fetchAppKey(),"id":id]
         }
         
     }
@@ -231,7 +231,7 @@ extension FBApi: FBObservableReq {
         
         switch self {
             
-        default: return FBConfigure.fetchDomain()
+        default: return GENSign.fetchDomain()
             
         }
     }

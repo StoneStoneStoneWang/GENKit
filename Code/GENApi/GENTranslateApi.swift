@@ -1,5 +1,5 @@
 //
-//  FBTranslateApi.swift
+//  GENTranslateApi.swift
 //  ZApi
 //
 //  Created by three stone 王 on 2020/3/16.
@@ -7,11 +7,11 @@
 //
 
 import Foundation
-import FBObservableReq
+import GENObservableReq
 import Alamofire
 
-@objc (FBTranslateStyle)
-public enum FBTranslateStyle: Int {
+@objc (GENTranslateStyle)
+public enum GENTranslateStyle: Int {
     
     case id // 🇮🇩 印尼语
     
@@ -30,7 +30,7 @@ public enum FBTranslateStyle: Int {
     case th // 🇹🇭 泰语
 }
 
-extension FBTranslateStyle {
+extension GENTranslateStyle {
     
     public var title: String {
         
@@ -54,7 +54,7 @@ extension FBTranslateStyle {
     }
 }
 
-public enum FBTranslateApi {
+public enum GENTranslateApi {
     
     case translateFromCNToKO(_ text: String ) // 韩语-> 中文
     
@@ -64,12 +64,12 @@ public enum FBTranslateApi {
     
     case translateFromCNToTer(_ text: String) // 中文 -> 印尼语
     
-    case translateFromCNTo(_ text: String ,style: FBTranslateStyle)
+    case translateFromCNTo(_ text: String ,style: GENTranslateStyle)
     
-    case translateToCN(_ text: String ,style: FBTranslateStyle)
+    case translateToCN(_ text: String ,style: GENTranslateStyle)
 }
 
-extension FBTranslateApi: FBObservableReq {
+extension GENTranslateApi: GENObservableReq {
     
     public var host: String { return "" }
     

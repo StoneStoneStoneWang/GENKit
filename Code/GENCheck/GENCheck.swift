@@ -7,67 +7,67 @@
 //
 
 import Foundation
-import FBResult
+import GENResult
 import WLToolsKit
 
-public func FBCheckUsernameAndPassword(_ username: String ,password: String) -> FBResult {
+public func GENCheckUsernameAndPassword(_ username: String ,password: String) -> GENResult {
     
     if username.isEmpty || username.wl_isEmpty {
         
-        return FBResult.failed("请输入手机号")
+        return GENResult.failed("请输入手机号")
     }
     
     if !String.validPhone(phone: username) {
-        return FBResult.failed("请输入11位手机号")
+        return GENResult.failed("请输入11位手机号")
     }
     
     if password.isEmpty || password.wl_isEmpty {
         
-        return FBResult.failed("请输入6-18密码")
+        return GENResult.failed("请输入6-18密码")
     }
     
     if password.length < 6 {
         
-        return FBResult.failed("请输入6-18密码")
+        return GENResult.failed("请输入6-18密码")
     }
     
-    return FBResult.ok("验证成功")
+    return GENResult.ok("验证成功")
 }
 
-public func FBCheckUsernameAndVCode(_ mobile: String ,vcode: String) -> FBResult {
+public func GENCheckUsernameAndVCode(_ mobile: String ,vcode: String) -> GENResult {
     
     if mobile.isEmpty || mobile.wl_isEmpty {
         
-        return FBResult.failed("手机号不能为空")
+        return GENResult.failed("手机号不能为空")
     }
     if !String.validPhone(phone: mobile) {
         
-        return FBResult.failed( "请输入正确手机号")
+        return GENResult.failed( "请输入正确手机号")
     }
     
     if vcode.isEmpty || vcode.wl_isEmpty {
         
-        return FBResult.failed( "请输入6位验证码")
+        return GENResult.failed( "请输入6位验证码")
     }
     
     if vcode.length < 6 {
         
-        return FBResult.failed( "请输入6位验证码")
+        return GENResult.failed( "请输入6位验证码")
     }
     
-    return FBResult.ok( "")
+    return GENResult.ok( "")
 }
-public func FBCheckUsername(_ mobile: String ) -> FBResult {
+public func GENCheckUsername(_ mobile: String ) -> GENResult {
     
     if mobile.isEmpty || mobile.wl_isEmpty {
         
-        return FBResult.failed("手机号不能为空")
+        return GENResult.failed("手机号不能为空")
     }
     if !String.validPhone(phone: mobile) {
         
-        return FBResult.failed( "请输入正确手机号")
+        return GENResult.failed( "请输入正确手机号")
     }
-    return FBResult.ok("")
+    return GENResult.ok("")
 }
 
 public func smsResult(count: Int) -> (Bool ,String) {
@@ -77,74 +77,74 @@ public func smsResult(count: Int) -> (Bool ,String) {
     else { return (false ,"(\(count)s)")}
 }
 
-public func FBCheckPasswordForget(_ mobile: String ,vcode: String ,password: String) -> FBResult {
+public func GENCheckPasswordForget(_ mobile: String ,vcode: String ,password: String) -> GENResult {
     
     if mobile.isEmpty || mobile.wl_isEmpty {
         
-        return FBResult.failed("手机号不能为空")
+        return GENResult.failed("手机号不能为空")
     }
     if !String.validPhone(phone: mobile) {
         
-        return FBResult.failed( "请输入正确手机号")
+        return GENResult.failed( "请输入正确手机号")
     }
     
     if vcode.isEmpty || vcode.wl_isEmpty {
         
-        return FBResult.failed( "请输入6位验证码")
+        return GENResult.failed( "请输入6位验证码")
     }
     
     if vcode.length < 6 {
         
-        return FBResult.failed( "请输入6位验证码")
+        return GENResult.failed( "请输入6位验证码")
     }
     
     if password.isEmpty || password.wl_isEmpty {
         
-        return FBResult.failed( "请输入6-18位密码")
+        return GENResult.failed( "请输入6-18位密码")
     }
     
     if password.length < 6 {
         
-        return FBResult.failed( "请输入6-18位密码")
+        return GENResult.failed( "请输入6-18位密码")
     }
     
-    return FBResult.ok( "")
+    return GENResult.ok( "")
 }
 
-public func FBCheckPasswordModify(_ oldpassword: String,password: String ,passwordAgain: String) -> FBResult {
+public func GENCheckPasswordModify(_ oldpassword: String,password: String ,passwordAgain: String) -> GENResult {
     
     if oldpassword.isEmpty || oldpassword.wl_isEmpty {
         
-        return FBResult.failed( "请输入6-18位旧密码")
+        return GENResult.failed( "请输入6-18位旧密码")
     }
     
     if oldpassword.length < 6 {
         
-        return FBResult.failed( "请输入6-18位旧密码")
+        return GENResult.failed( "请输入6-18位旧密码")
     }
     if password.isEmpty || password.wl_isEmpty {
         
-        return FBResult.failed( "请输入6-18位新密码")
+        return GENResult.failed( "请输入6-18位新密码")
     }
     
     if password.length < 6 {
         
-        return FBResult.failed( "请输入6-18位新密码")
+        return GENResult.failed( "请输入6-18位新密码")
     }
     
     if passwordAgain.isEmpty || passwordAgain.wl_isEmpty {
         
-        return FBResult.failed( "请输入6-18位确认密码")
+        return GENResult.failed( "请输入6-18位确认密码")
     }
     
     if passwordAgain.length < 6 {
         
-        return FBResult.failed( "请输入6-18位确认密码")
+        return GENResult.failed( "请输入6-18位确认密码")
     }
     
     if password != passwordAgain {
-        return FBResult.failed( "新密码和确认密码不一致")
+        return GENResult.failed( "新密码和确认密码不一致")
     }
     
-    return FBResult.ok( "")
+    return GENResult.ok( "")
 }
