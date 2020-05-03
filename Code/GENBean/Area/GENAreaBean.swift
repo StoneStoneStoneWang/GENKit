@@ -1,5 +1,5 @@
 //
-//  FBAreaBean.swift
+//  GENAreaBean.swift
 //  DAddressDemo
 //
 //  Created by three stone 王 on 2019/7/16.
@@ -10,8 +10,8 @@ import Foundation
 import ObjectMapper
 import RxDataSources
 
-@objc (FBAreaBean)
-public class FBAreaBean: NSObject,Mappable ,IdentifiableType {
+@objc (GENAreaBean)
+public class GENAreaBean: NSObject,Mappable ,IdentifiableType {
     
     public var identity: String = NSUUID().uuidString
     
@@ -33,7 +33,7 @@ public class FBAreaBean: NSObject,Mappable ,IdentifiableType {
     
     @objc public var typename: String = ""
     
-    @objc public var addrList: [FBAreaBean] = []
+    @objc public var addrList: [GENAreaBean] = []
     
     required public init?(map: Map) { }
     

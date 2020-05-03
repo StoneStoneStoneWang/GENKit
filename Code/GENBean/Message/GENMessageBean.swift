@@ -1,6 +1,6 @@
 //
-//  FBMessageBean.swift
-//  FBBean
+//  GENMessageBean.swift
+//  GENBean
 //
 //  Created by 王磊 on 2020/4/14.
 //  Copyright © 2020 王磊. All rights reserved.
@@ -10,8 +10,8 @@ import Foundation
 import ObjectMapper
 import RxDataSources
 
-@objc (FBMessageBean)
-public final class FBMessageBean: NSObject,Mappable,IdentifiableType {
+@objc (GENMessageBean)
+public final class GENMessageBean: NSObject,Mappable,IdentifiableType {
     
     public var identity: String = NSUUID().uuidString
     

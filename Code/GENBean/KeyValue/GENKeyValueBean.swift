@@ -1,5 +1,5 @@
 //
-//  FBKeyValueBean.swift
+//  GENKeyValueBean.swift
 //  WLUserKitDemo
 //
 //  Created by three stone 王 on 2019/4/30.
@@ -10,8 +10,8 @@ import Foundation
 import ObjectMapper
 import RxDataSources
 
-@objc (FBKeyValueBean)
-public class FBKeyValueBean: NSObject,Mappable ,IdentifiableType {
+@objc (GENKeyValueBean)
+public class GENKeyValueBean: NSObject,Mappable ,IdentifiableType {
     
     public var identity: String = NSUUID().uuidString
     

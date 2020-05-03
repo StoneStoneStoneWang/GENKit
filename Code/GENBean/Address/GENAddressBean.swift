@@ -1,5 +1,5 @@
 //
-//  FBAddressBean.swift
+//  GENAddressBean.swift
 //  DStoreDemo
 //
 //  Created by three stone 王 on 2019/7/16.
@@ -10,8 +10,8 @@ import Foundation
 import ObjectMapper
 import RxDataSources
 
-@objc (FBAddressBean)
-public class FBAddressBean: NSObject,Mappable,IdentifiableType {
+@objc (GENAddressBean)
+public class GENAddressBean: NSObject,Mappable,IdentifiableType {
     public var identity: String = ""
     
     public typealias Identity = String

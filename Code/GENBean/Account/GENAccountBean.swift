@@ -1,5 +1,5 @@
 //
-//  FBAccountBean.swift
+//  GENAccountBean.swift
 //  ZUserKit
 //
 //  Created by three stone 王 on 2019/3/15.
@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-public struct FBAccountBean: Mappable {
+public struct GENAccountBean: Mappable {
     
     public var token: String = ""
     

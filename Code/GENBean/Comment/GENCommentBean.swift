@@ -1,5 +1,5 @@
 //
-//  FBCommentBean.swift
+//  GENCommentBean.swift
 //  ZBean
 //
 //  Created by three stone 王 on 2019/8/30.
@@ -9,8 +9,8 @@
 import Foundation
 import ObjectMapper
 import RxDataSources
-@objc (FBCommentBean)
-public final class FBCommentBean: NSObject,Mappable,IdentifiableType {
+@objc (GENCommentBean)
+public final class GENCommentBean: NSObject,Mappable,IdentifiableType {
     
     public var identity: String = ""
     
@@ -37,7 +37,7 @@ public final class FBCommentBean: NSObject,Mappable,IdentifiableType {
     
     @objc public var content: String = ""
     
-    @objc public var users: FBUserBean!
+    @objc public var users: GENUserBean!
     
     @objc public var encoded: String = ""
     

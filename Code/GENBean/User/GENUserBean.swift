@@ -1,5 +1,5 @@
 //
-//  FBUserBean.swift
+//  GENUserBean.swift
 //  ZUserKit
 //
 //  Created by three stone 王 on 2019/3/15.
@@ -9,8 +9,8 @@
 import Foundation
 import ObjectMapper
 
-@objc (FBUserBean)
-public class FBUserBean: NSObject, Mappable ,NSCoding {
+@objc (GENUserBean)
+public class GENUserBean: NSObject, Mappable ,NSCoding {
     public required init?(coder aDecoder: NSCoder) {
         
         phone = aDecoder.decodeObject(forKey: "phone") as! String
@@ -56,9 +56,9 @@ public class FBUserBean: NSObject, Mappable ,NSCoding {
     
     @objc public var sex: Int = Int.max
     
-    public var gender: FBGenderType {
+    public var gender: GENGenderType {
         
-        return FBGenderType(temp: sex)
+        return GENGenderType(temp: sex)
     }
     
     @objc public var signature: String = ""

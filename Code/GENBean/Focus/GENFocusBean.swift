@@ -1,8 +1,8 @@
 //
-//  FBBlackBean.swift
-//  HZTC
+//  GENFocusBean.swift
+//  WLUserKitDemo
 //
-//  Created by three stone 王 on 2019/3/21.
+//  Created by three stone 王 on 2019/4/4.
 //  Copyright © 2019 three stone 王. All rights reserved.
 //
 
@@ -10,8 +10,8 @@ import Foundation
 import ObjectMapper
 import RxDataSources
 
-@objc (FBBlackBean)
-public class FBBlackBean: NSObject,Mappable,IdentifiableType {
+@objc (GENFocusBean)
+public class GENFocusBean: NSObject,Mappable,IdentifiableType {
     @objc public var identity: String = ""
     
     public typealias Identity = String
@@ -40,17 +40,18 @@ public class FBBlackBean: NSObject,Mappable,IdentifiableType {
         
         content <- map["content"]
     }
-     @objc public var users: FBUserBean!
+    @objc public var users: GENUserBean!
     
-     @objc public var tableName: String = ""
+    @objc public var tableName: String = ""
     
-     @objc public var oUsEncoded: String = ""
+    @objc public var oUsEncoded: String = ""
     
-     @objc public var targetEncoded: String = ""
+    @objc public var targetEncoded: String = ""
     
-     @objc public var usEncoded: String = ""
+    @objc public var usEncoded: String = ""
     
-     @objc public var content: String = ""
+    @objc public var content: String = ""
     
-     @objc public var encoded: String = ""
+    @objc public var encoded: String = ""
 }
+

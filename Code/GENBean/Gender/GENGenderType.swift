@@ -1,5 +1,5 @@
 //
-//  FBGenderType.swift
+//  GENGenderType.swift
 //  ZBean
 //
 //  Created by three stone 王 on 2019/8/22.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-@objc(FBGenderType)
-public enum FBGenderType: Int ,Codable {
+@objc(GENGenderType)
+public enum GENGenderType: Int ,Codable {
     
     case unknown = 0
     
@@ -30,7 +30,7 @@ public enum FBGenderType: Int ,Codable {
     }
 }
 
-extension FBGenderType {
+extension GENGenderType {
     
     public var gender: String {
         

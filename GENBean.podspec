@@ -61,12 +61,6 @@ Pod::Spec.new do |spec|
     circle.dependency 'WLToolsKit/JsonCast'
   end
   
-  spec.subspec 'Commodity' do |commodity|
-    commodity.source_files = "Code/GENBean/Commodity/*.{swift}"
-    commodity.dependency 'GENBean/KeyValue'
-    commodity.dependency 'GENBean/User'
-    commodity.dependency 'WLToolsKit/JsonCast'
-  end
   spec.subspec 'Comment' do |comment|
     comment.source_files = "Code/GENBean/Comment/*.{swift}"
     comment.dependency 'GENBean/User'
