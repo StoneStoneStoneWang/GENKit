@@ -1,5 +1,5 @@
 //
-//  FBAccountCache.swift
+//  GENAccountCache.swift
 //  ZUserKit
 //
 //  Created by three stone 王 on 2019/3/15.
@@ -7,23 +7,23 @@
 //
 
 import Foundation
-import FBBean
+import GENBean
 
-@objc (FBAccountCache)
-public final class FBAccountCache: NSObject {
+@objc (GENAccountCache)
+public final class GENAccountCache: NSObject {
     @objc (shared)
-    public static let `default`: FBAccountCache = FBAccountCache()
+    public static let `default`: GENAccountCache = GENAccountCache()
     
     private override init() { }
     
     @objc public var token: String = ""
     
-    public var phone: String = ""
+    @objc public var phone: String = ""
     
     @objc public var uid: String = ""
 }
 
-extension FBAccountCache {
+extension GENAccountCache {
     
     @objc public func isPushOn() -> Bool {
         
@@ -48,7 +48,7 @@ extension FBAccountCache {
         return !token.isEmpty && token != ""
     }
     
-    public func saveAccount(acc: FBAccountBean) -> FBAccountBean {
+    public func saveAccount(acc: GENAccountBean) -> GENAccountBean {
         
         UserDefaults.standard.setValue(acc.token, forKey: "token")
         
@@ -67,14 +67,14 @@ extension FBAccountCache {
         return acc
     }
     
-    public func queryAccount() -> FBAccountBean! {
+    public func queryAccount() -> GENAccountBean! {
         
         guard let id = UserDefaults.standard.object(forKey: "uid") else {
             
             return nil
         }
         
-        var acc = FBAccountBean()
+        var acc = GENAccountBean()
         
         acc.token = UserDefaults.standard.object(forKey: "token") as? String ?? ""
         
@@ -100,7 +100,7 @@ extension FBAccountCache {
             return
         }
         
-        var acc = FBAccountBean()
+        var acc = GENAccountBean()
         
         acc.token = UserDefaults.standard.object(forKey: "token") as? String ?? ""
         
