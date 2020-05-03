@@ -1,0 +1,6 @@
+framework module GENTransition {
+  umbrella header "GENTransition.h"
+
+  export *
+  module * { export * }
+}

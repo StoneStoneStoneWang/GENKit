@@ -1,0 +1,6 @@
+framework module GENShare {
+  umbrella header "GENShare.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module GENUpload {
+  umbrella header "GENUpload.h"
+
+  export *
+  module * { export * }
+}
