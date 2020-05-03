@@ -1,0 +1,6 @@
+framework module GENIM {
+  umbrella header "GENIM.h"
+
+  export *
+  module * { export * }
+}
