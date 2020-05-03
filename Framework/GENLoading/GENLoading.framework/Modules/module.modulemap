@@ -1,0 +1,6 @@
+framework module GENLoading {
+  umbrella header "GENLoading.h"
+
+  export *
+  module * { export * }
+}
