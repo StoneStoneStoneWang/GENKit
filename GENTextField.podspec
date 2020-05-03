@@ -32,30 +32,9 @@ Pod::Spec.new do |spec|
     base.dependency 'GENTextField/Setting'
   end
   
-  spec.subspec 'LeftTitle' do |leftTitle|
-    leftTitle.source_files = "Code/GENTextField/LeftTitle/*.{swift}"
-    leftTitle.dependency 'GENTextField/Base'
-    leftTitle.dependency 'WLToolsKit/Color'
-  end
-  spec.subspec 'LeftImage' do |leftImage|
-    leftImage.source_files = "Code/GENTextField/LeftImg/*.{swift}"
-    leftImage.dependency 'GENTextField/Base'
-  end
-  spec.subspec 'NickName' do |nickName|
-    nickName.source_files = "Code/GENTextField/NickName/*.{swift}"
-    nickName.dependency 'GENTextField/Base'
-  end
-  
-  spec.subspec 'Password' do |password|
-    password.source_files = "Code/GENTextField/Password/*.{swift}"
-    password.dependency 'GENTextField/LeftImage'
-    password.dependency 'GENTextField/LeftTitle'
-  end
-  
-  spec.subspec 'Vcode' do |vcode|
-    vcode.source_files = "Code/GENTextField/Vcode/*.{swift}"
-    vcode.dependency 'GENTextField/LeftImage'
-    vcode.dependency 'GENTextField/LeftTitle'
+  spec.subspec 'Image' do |image|
+    image.source_files = "Code/GENTextField/Image/*.{swift}"
+    image.dependency 'GENTextField/Base'
   end
   
 end

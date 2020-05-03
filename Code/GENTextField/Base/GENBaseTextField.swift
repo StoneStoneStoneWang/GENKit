@@ -158,7 +158,22 @@ open class GENBaseTextField: UITextField {
     // MARK: 文本变化回调（observer为UITextFiled）
     fileprivate var textChanged: GENTextChanged!
     
+    @objc (margin)
+    public var margin: CGFloat = 15
     
+    override public func editingRect(forBounds bounds: CGRect) -> CGRect {
+        
+        let rect = super.editingRect(forBounds: bounds)
+        
+        return CGRect(x: rect.minX + margin, y: rect.minY, width: rect.width - margin, height: rect.height)
+    }
+    
+    override public func textRect(forBounds bounds: CGRect) -> CGRect {
+        
+        let rect = super.textRect(forBounds: bounds)
+        
+        return CGRect(x: rect.minX + margin, y: rect.minY, width: rect.width - margin, height: rect.height)
+    }
 }
 
 extension GENBaseTextField {
@@ -212,13 +227,6 @@ extension GENBaseTextField {
         //        case `default` // 默认 这个在swift中弃用
     }
 }
-extension GENBaseTextField {
-    @objc (makeAttributeWithClosure:)
-    open func makeAttribute(_ closure: @escaping (GENBaseTextField) -> ()) {
-        
-        closure(self)
-    }
-}
 
 // 新增属性的处理
 extension GENBaseTextField {
@@ -237,6 +245,7 @@ extension GENBaseTextField {
         
         self.pattern = pattern
     }
+    
     @objc (GEN_textChanged:)
     public func GEN_textChanged(_ textChanged: @escaping (GENBaseTextField) -> ()) {
         
@@ -418,12 +427,6 @@ extension GENBaseTextField {
         if let textChanged = textChanged {  textChanged(target) }
         
     }
-}
-
-// MARK: editingRect and textRect rightViewRect leftViewRect
-extension GENBaseTextField {
-    
-    
 }
 extension String {
     //使用正则表达式替换
