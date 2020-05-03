@@ -8,25 +8,25 @@
 
 import Foundation
 import RxSwift
-import FBCache
-import FBReq
-import FBUpload
-import FBSign
-import FBError
-import FBObservableReq
+import GENCache
+import GENReq
+import GENUpload
+import GENSign
+import GENError
+import GENObservableReq
 
-public func FBDictResp<T : FBObservableReq>(_ req: T) -> Observable<[String:Any]> {
+public func GENDictResp<T : GENObservableReq>(_ req: T) -> Observable<[String:Any]> {
     
     return Observable<[String:Any]>.create({ (observer) -> Disposable in
         
         var params = req.params
         
-        if !FBAccountCache.default.token.isEmpty {
+        if !GENAccountCache.default.token.isEmpty {
             
-            params.updateValue(FBAccountCache.default.token, forKey: "token")
+            params.updateValue(GENAccountCache.default.token, forKey: "token")
         }
         
-        FBReq.postWithUrl(url: req.host + req.reqName, params: params, header: req.headers, succ: { (data) in
+        GENReq.postWithUrl(url: req.host + req.reqName, params: params, header: req.headers, succ: { (data) in
             
             observer.onNext(data as! [String:Any])
             
@@ -35,25 +35,25 @@ public func FBDictResp<T : FBObservableReq>(_ req: T) -> Observable<[String:Any]
             
             let ocError = error as NSError
             
-            if ocError.code == 122 || ocError.code == 123 || ocError.code == 124 || ocError.code == 121 { observer.onError(FBError.ServerResponseError(ocError.localizedDescription)) }
-            else { observer.onError(FBError.HTTPFailed(error)) }
+            if ocError.code == 122 || ocError.code == 123 || ocError.code == 124 || ocError.code == 121 { observer.onError(GENError.ServerResponseError(ocError.localizedDescription)) }
+            else { observer.onError(GENError.HTTPFailed(error)) }
         })
         
         return Disposables.create { }
     })
 }
 
-public func FBArrayResp<T : FBObservableReq>(_ req: T) -> Observable<[Any]> {
+public func GENArrayResp<T : GENObservableReq>(_ req: T) -> Observable<[Any]> {
     
     return Observable<[Any]>.create({ (observer) -> Disposable in
         
         var params = req.params
         
-        if !FBAccountCache.default.token.isEmpty {
+        if !GENAccountCache.default.token.isEmpty {
             
-            params.updateValue(FBAccountCache.default.token, forKey: "token")
+            params.updateValue(GENAccountCache.default.token, forKey: "token")
         }
-        FBReq.postWithUrl(url: req.host + req.reqName, params: params, header: req.headers, succ: { (data) in
+        GENReq.postWithUrl(url: req.host + req.reqName, params: params, header: req.headers, succ: { (data) in
 
             observer.onNext(data as! [Any])
 
@@ -63,8 +63,8 @@ public func FBArrayResp<T : FBObservableReq>(_ req: T) -> Observable<[Any]> {
 
             let ocError = error as NSError
 
-            if ocError.code == 122 || ocError.code == 123 || ocError.code == 124 || ocError.code == 121 { observer.onError(FBError.ServerResponseError(ocError.localizedDescription)) }
-            else { observer.onError(FBError.HTTPFailed(error)) }
+            if ocError.code == 122 || ocError.code == 123 || ocError.code == 124 || ocError.code == 121 { observer.onError(GENError.ServerResponseError(ocError.localizedDescription)) }
+            else { observer.onError(GENError.HTTPFailed(error)) }
         })
         
         return Disposables.create { }
@@ -72,18 +72,18 @@ public func FBArrayResp<T : FBObservableReq>(_ req: T) -> Observable<[Any]> {
 }
 
 // 无返回值的 在data里
-public func FBVoidResp<T : FBObservableReq>(_ req: T) -> Observable<Void> {
+public func GENVoidResp<T : GENObservableReq>(_ req: T) -> Observable<Void> {
     
     return Observable<Void>.create({ (observer) -> Disposable in
         
         var params = req.params
         
-        if !FBAccountCache.default.token.isEmpty {
+        if !GENAccountCache.default.token.isEmpty {
             
-            params.updateValue(FBAccountCache.default.token, forKey: "token")
+            params.updateValue(GENAccountCache.default.token, forKey: "token")
         }
         
-        FBReq.postWithUrl(url: req.host + req.reqName, params: params, header: req.headers, succ: { (data) in
+        GENReq.postWithUrl(url: req.host + req.reqName, params: params, header: req.headers, succ: { (data) in
 
             observer.onNext(())
 
@@ -93,25 +93,25 @@ public func FBVoidResp<T : FBObservableReq>(_ req: T) -> Observable<Void> {
 
             let ocError = error as NSError
 
-            if ocError.code == 122 || ocError.code == 123 || ocError.code == 124 || ocError.code == 121 { observer.onError(FBError.ServerResponseError(ocError.localizedDescription)) }
-            else { observer.onError(FBError.HTTPFailed(error)) }
+            if ocError.code == 122 || ocError.code == 123 || ocError.code == 124 || ocError.code == 121 { observer.onError(GENError.ServerResponseError(ocError.localizedDescription)) }
+            else { observer.onError(GENError.HTTPFailed(error)) }
         })
         
         return Disposables.create { }
     })
 }
 
-public func FBAliResp<T : FBObservableReq>(_ req: T) -> Observable<FBALCredentialsBean> {
+public func GENAliResp<T : GENObservableReq>(_ req: T) -> Observable<GENCredentialsBean> {
     
-    return Observable<FBALCredentialsBean>.create({ (observer) -> Disposable in
+    return Observable<GENCredentialsBean>.create({ (observer) -> Disposable in
         
         var params = req.params
         
-        if !FBAccountCache.default.token.isEmpty {
+        if !GENAccountCache.default.token.isEmpty {
             
-            params.updateValue(FBAccountCache.default.token, forKey: "token")
+            params.updateValue(GENAccountCache.default.token, forKey: "token")
         }
-        FBUpload.fetchAliObj(withUrl: req.host + req.reqName , andParams: params, andHeader: req.headers, andSucc: { (credentials) in
+        GENUpload.fetchAliObj(withUrl: req.host + req.reqName , andParams: params, andHeader: req.headers, andSucc: { (credentials) in
 
             observer.onNext(credentials)
 
@@ -121,20 +121,20 @@ public func FBAliResp<T : FBObservableReq>(_ req: T) -> Observable<FBALCredentia
 
             let ocError = error as NSError
 
-            if ocError.code == 131 { observer.onError(FBError.ServerResponseError(ocError.localizedDescription)) }
+            if ocError.code == 131 { observer.onError(GENError.ServerResponseError(ocError.localizedDescription)) }
 
-            else { observer.onError(FBError.HTTPFailed(error)) }
+            else { observer.onError(GENError.HTTPFailed(error)) }
         })
         
         return Disposables.create { }
     })
 }
 
-public func FBUploadImgResp(_ data: Data ,file: String ,param: FBALCredentialsBean) -> Observable<String> {
+public func GENUploadImgResp(_ data: Data ,file: String ,param: GENCredentialsBean) -> Observable<String> {
     
     return Observable<String>.create({ (observer) -> Disposable in
         
-        FBUpload.uploadAvatar(with: data, andFile: file, andUid: FBAccountCache.default.uid, andParams: param, andSucc: { (objKey) in
+        GENUpload.uploadAvatar(with: data, andFile: file, andUid: GENAccountCache.default.uid, andParams: param, andSucc: { (objKey) in
 
             observer.onNext(objKey)
 
@@ -144,20 +144,20 @@ public func FBUploadImgResp(_ data: Data ,file: String ,param: FBALCredentialsBe
 
             let ocError = error as NSError
 
-            if ocError.code == 132 { observer.onError(FBError.ServerResponseError(ocError.localizedDescription)) }
+            if ocError.code == 132 { observer.onError(GENError.ServerResponseError(ocError.localizedDescription)) }
 
-            else { observer.onError(FBError.HTTPFailed(error)) }
+            else { observer.onError(GENError.HTTPFailed(error)) }
         })
         
         return Disposables.create { }
     })
 }
 
-public func FBUploadPubImgResp(_ data: Data ,file: String ,param: FBALCredentialsBean) -> Observable<String> {
+public func GENUploadPubImgResp(_ data: Data ,file: String ,param: GENCredentialsBean) -> Observable<String> {
     
     return Observable<String>.create({ (observer) -> Disposable in
         
-        FBUpload.uploadImage(with: data, andFile: file, andUid: FBAccountCache.default.uid, andParams: param, andSucc: { (objKey) in
+        GENUpload.uploadImage(with: data, andFile: file, andUid: GENAccountCache.default.uid, andParams: param, andSucc: { (objKey) in
 
             observer.onNext(objKey)
 
@@ -167,19 +167,19 @@ public func FBUploadPubImgResp(_ data: Data ,file: String ,param: FBALCredential
 
             let ocError = error as NSError
 
-            if ocError.code == 132 { observer.onError(FBError.ServerResponseError(ocError.localizedDescription)) }
+            if ocError.code == 132 { observer.onError(GENError.ServerResponseError(ocError.localizedDescription)) }
 
-            else { observer.onError(FBError.HTTPFailed(error)) }
+            else { observer.onError(GENError.HTTPFailed(error)) }
         })
         
         return Disposables.create { }
     })
 }
-public func FBUploadVideoResp(_ data: Data ,file: String ,param: FBALCredentialsBean) -> Observable<String> {
+public func GENUploadVideoResp(_ data: Data ,file: String ,param: GENCredentialsBean) -> Observable<String> {
     
     return Observable<String>.create({ (observer) -> Disposable in
         
-        FBUpload.uploadVideo(with: data, andFile: file, andUid: FBAccountCache.default.uid, andParams: param, andSucc: { (objKey) in
+        GENUpload.uploadVideo(with: data, andFile: file, andUid: GENAccountCache.default.uid, andParams: param, andSucc: { (objKey) in
 
             observer.onNext(objKey)
 
@@ -189,20 +189,20 @@ public func FBUploadVideoResp(_ data: Data ,file: String ,param: FBALCredentials
 
             let ocError = error as NSError
 
-            if ocError.code == 132 { observer.onError(FBError.ServerResponseError(ocError.localizedDescription)) }
+            if ocError.code == 132 { observer.onError(GENError.ServerResponseError(ocError.localizedDescription)) }
 
-            else { observer.onError(FBError.HTTPFailed(error)) }
+            else { observer.onError(GENError.HTTPFailed(error)) }
         })
 //
         return Disposables.create { }
     })
 }
 
-public func FBTranslateResp<T : FBObservableReq>(_ req: T) -> Observable<[String:Any]> {
+public func GENTranslateResp<T : GENObservableReq>(_ req: T) -> Observable<[String:Any]> {
     
     return Observable<[String:Any]>.create({ (observer) -> Disposable in
         
-        FBReq.postTranslateWithParams(params: req.params, succ: { (data) in
+        GENReq.postTranslateWithParams(params: req.params, succ: { (data) in
             observer.onNext(data as! [String:Any])
             
             observer.onCompleted()
@@ -210,22 +210,22 @@ public func FBTranslateResp<T : FBObservableReq>(_ req: T) -> Observable<[String
             
             let ocError = error as NSError
             
-            if ocError.code == 122 || ocError.code == 123 || ocError.code == 124 || ocError.code == 121 { observer.onError(FBError.ServerResponseError(ocError.localizedDescription)) }
-            else { observer.onError(FBError.HTTPFailed(error)) }
+            if ocError.code == 122 || ocError.code == 123 || ocError.code == 124 || ocError.code == 121 { observer.onError(GENError.ServerResponseError(ocError.localizedDescription)) }
+            else { observer.onError(GENError.HTTPFailed(error)) }
         })
         return Disposables.create { }
     })
 }
 
-public func FBAreaResp<T : FBObservableReq>(_ req: T) -> Observable<[Any]> {
+public func GENAreaResp<T : GENObservableReq>(_ req: T) -> Observable<[Any]> {
     
     return Observable<[Any]>.create({ (observer) -> Disposable in
         
-        FBReq.postAreaWithUrl(url: req.host + req.reqName, params: req.params, succ: { (data) in
+        GENReq.postAreaWithUrl(url: req.host + req.reqName, params: req.params, succ: { (data) in
             
             if data is NSDictionary {
                 
-                observer.onError(FBError.ServerResponseError("没有权限"))
+                observer.onError(GENError.ServerResponseError("没有权限"))
             } else if data is NSArray {
                 
                 observer.onNext(data as! [Any])
@@ -237,10 +237,9 @@ public func FBAreaResp<T : FBObservableReq>(_ req: T) -> Observable<[Any]> {
             
             let ocError = error as NSError
             
-            if ocError.code == 122 || ocError.code == 123 || ocError.code == 124 || ocError.code == 121 { observer.onError(FBError.ServerResponseError(ocError.localizedDescription)) }
-            else { observer.onError(FBError.HTTPFailed(error)) }
+            if ocError.code == 122 || ocError.code == 123 || ocError.code == 124 || ocError.code == 121 { observer.onError(GENError.ServerResponseError(ocError.localizedDescription)) }
+            else { observer.onError(GENError.HTTPFailed(error)) }
         })
-        
         
         return Disposables.create { }
     })
