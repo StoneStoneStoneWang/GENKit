@@ -1,5 +1,5 @@
 //
-//  UITableView+RX.swift
+// GENRefresh.swift
 //  ZCocoa
 //
 //  Created by three stone 王 on 2019/8/29.
@@ -13,7 +13,7 @@ import RxSwift
 
 public extension Reactive where Base: MJRefreshComponent {
     
-    var FBRefreshing: ControlEvent<Void> {
+    var GENRefreshing: ControlEvent<Void> {
         let source: Observable<Void> = Observable.create {
             [weak control = self.base] observer  in
             if let control = control {
@@ -27,7 +27,7 @@ public extension Reactive where Base: MJRefreshComponent {
     }
     
     //停止刷新
-    var FBEndRefreshing: Binder<Bool> {
+    var GENEndRefreshing: Binder<Bool> {
         return Binder(base) { refresh, isEnd in
             if isEnd {
                 refresh.endRefreshing()

@@ -1,5 +1,5 @@
 //
-//  Button+RX.swift
+//  GENButton.swift
 //  WLUserKitDemo
 //
 //  Created by three stone 王 on 2019/4/15.
@@ -12,7 +12,7 @@ import RxCocoa
 
 extension Reactive where Base: UIButton {
     
-    public var FBSkipTitle: Binder<String> {
+    public var GENSkipTitle: Binder<String> {
         
         return Binder(self.base) {
             
@@ -25,7 +25,7 @@ extension Reactive where Base: UIButton {
 
 extension Reactive where Base: UIButton {
     
-    public var FBSms: Binder<(Bool ,String)> {
+    public var GENSms: Binder<(Bool ,String)> {
         return Binder(self.base) { item, arg in
             
             item.isEnabled = arg.0

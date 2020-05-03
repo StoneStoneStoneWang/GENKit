@@ -1,5 +1,5 @@
 //
-//  FBAnimationSetionModel.swift
+//  GENAnimationSetionModel.swift
 //  ZCocoa
 //
 //  Created by three stone 王 on 2019/8/29.
@@ -9,7 +9,7 @@
 import Foundation
 import RxDataSources
 
-public struct FBAnimationSetionModel<ItemType: IdentifiableType & Equatable> {
+public struct GENAnimationSetionModel<ItemType: IdentifiableType & Equatable> {
     public var header: String
     public var items: [Item]
     
@@ -19,14 +19,14 @@ public struct FBAnimationSetionModel<ItemType: IdentifiableType & Equatable> {
     }
 }
 
-extension FBAnimationSetionModel : AnimatableSectionModelType {
+extension GENAnimationSetionModel : AnimatableSectionModelType {
     public typealias Item = ItemType
     
     public var identity: String {
         return header
     }
     
-    public init(original: FBAnimationSetionModel, items: [Item]) {
+    public init(original: GENAnimationSetionModel, items: [Item]) {
         self = original
         self.items = items
     }
