@@ -1,0 +1,6 @@
+framework module GENOSS {
+  umbrella header "GENOSS.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module GENHud {
+  umbrella header "GENHud.h"
+
+  export *
+  module * { export * }
+}

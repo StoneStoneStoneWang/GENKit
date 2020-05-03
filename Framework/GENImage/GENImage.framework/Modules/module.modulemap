@@ -1,0 +1,6 @@
+framework module GENImage {
+  umbrella header "GENImage.h"
+
+  export *
+  module * { export * }
+}

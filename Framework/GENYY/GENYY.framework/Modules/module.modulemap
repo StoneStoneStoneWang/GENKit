@@ -1,0 +1,6 @@
+framework module GENYY {
+  umbrella header "GENYY.h"
+
+  export *
+  module * { export * }
+}

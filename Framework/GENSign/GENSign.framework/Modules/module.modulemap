@@ -1,0 +1,6 @@
+framework module GENSign {
+  umbrella header "GENSign.h"
+
+  export *
+  module * { export * }
+}
