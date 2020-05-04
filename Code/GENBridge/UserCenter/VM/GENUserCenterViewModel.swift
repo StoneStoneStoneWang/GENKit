@@ -92,7 +92,7 @@ extension GENUserCenterType {
         
         if GENSign.fetchPType() == .lock {
             
-            return [userInfo,.car,.privacy,.feedBack,.version,.setting]
+            return [userInfo,.privacy,.feedBack,.version,.setting]
         }
         
         return [userInfo,.contactUS,.feedBack,.setting]

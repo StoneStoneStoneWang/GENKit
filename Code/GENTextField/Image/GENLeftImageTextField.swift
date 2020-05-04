@@ -29,7 +29,7 @@ open class GENLeftImageTextField: GENBaseTextField {
             
             leftImageView.image = image
             
-            leftImageView.contentMode = .scaleAspectFit
+            leftImageView.contentMode = .center
             
             leftView = leftImageView
         }
