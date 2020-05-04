@@ -42,6 +42,7 @@ NS_SWIFT_NAME(GENIM)
 
 + (void)logout;
 
+
 @end
 
 NS_ASSUME_NONNULL_END

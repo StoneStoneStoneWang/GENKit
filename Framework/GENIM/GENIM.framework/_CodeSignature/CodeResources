@@ -14,11 +14,11 @@
 		</data>
 		<key>Headers/GENConversationViewController.h</key>
 		<data>
-		vDeSB6peMWF5VAHE+Rpf3r4L9Xk=
+		cpCAnDBnna/3lOzL9yha96NFJkk=
 		</data>
 		<key>Headers/GENIM.h</key>
 		<data>
-		MQjwpfG+eb7kVW/4VLCFHkUb594=
+		iaqGmj2xDZCEi6k2ag2LXdErc+s=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -1545,22 +1545,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			vDeSB6peMWF5VAHE+Rpf3r4L9Xk=
+			cpCAnDBnna/3lOzL9yha96NFJkk=
 			</data>
 			<key>hash2</key>
 			<data>
-			c7VnMoLWuE1visv0OLwqcUrDQORLgj31LcnELpUuwrY=
+			bvacbAOVBdzYAaxCW0pcTF7z6aYvNPFCSCgtbNHMUh0=
 			</data>
 		</dict>
 		<key>Headers/GENIM.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			MQjwpfG+eb7kVW/4VLCFHkUb594=
+			iaqGmj2xDZCEi6k2ag2LXdErc+s=
 			</data>
 			<key>hash2</key>
 			<data>
-			QihErjIMolmb0PvkJQm3SWS6TSB0EgC28XFmJ7yprR4=
+			H2kRuYrPVxeN/tl9nSWHOoiabWe10vZGjhB6XHHhXFQ=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
