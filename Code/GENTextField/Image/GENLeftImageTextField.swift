@@ -100,6 +100,16 @@ public final class GENVCodeImageTextField: GENLeftImageTextField {
         $0.setTitle("获取验证码", for: .normal)
     }
     
+    public override func commitInit() {
+        super.commitInit()
+        
+        rightView = vcodeItem
+        
+        rightViewMode = .always
+        
+        vcodeItem.sizeToFit()
+    }
+    
     public override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
         
         let rect = super.rightViewRect(forBounds: bounds)

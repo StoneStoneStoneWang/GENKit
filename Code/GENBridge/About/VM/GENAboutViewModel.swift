@@ -96,13 +96,13 @@ extension GENAboutType {
             
             guard let info = Bundle.main.infoDictionary else { return "" }
             
-            return (info["CGENundleDisplayName"] as? String ?? "").transformToPinYin() + "@gmail.com"
+            return (info["CFBundleDisplayName"] as? String ?? "").transformToPinYin() + "@gmail.com"
             
         case .wechat:
             
             guard let info = Bundle.main.infoDictionary else { return "" }
 
-            return info["CGENundleDisplayName"] as? String ?? ""
+            return info["CFBundleDisplayName"] as? String ?? ""
             
         case .check: return ""
         case .space: return ""

@@ -90,11 +90,7 @@
 		</data>
 		<key>Headers/GENAMap.h</key>
 		<data>
-		H5hiiNocqOToYKv+VoGPuCTa6cY=
-		</data>
-		<key>Headers/GENAMapViewController.h</key>
-		<data>
-		xMeRmhJD3ftfBT17rv7grBgfsE8=
+		ivYlIYC9cQKBBeedMgc0AjEGtSg=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -342,22 +338,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			H5hiiNocqOToYKv+VoGPuCTa6cY=
+			ivYlIYC9cQKBBeedMgc0AjEGtSg=
 			</data>
 			<key>hash2</key>
 			<data>
-			aL1SikIBY56xErOkuTo0HkWYVrflDSfEVlmaJCznZeM=
-			</data>
-		</dict>
-		<key>Headers/GENAMapViewController.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			xMeRmhJD3ftfBT17rv7grBgfsE8=
-			</data>
-			<key>hash2</key>
-			<data>
-			862nloGWL3UoSmblelTeZg6Bd0bbqGtSnO495EVOcuQ=
+			9vP5nnTORvnk66850MmX5R5Z914HG6cYl4vCPcnRup4=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

@@ -29,8 +29,6 @@ Pod::Spec.new do |spec|
   spec.dependency 'AMap2DMap-NO-IDFA'
   spec.dependency 'AMapSearch-NO-IDFA'
   
-  spec.dependency 'GENTransition'
-  
   spec.pod_target_xcconfig = { 'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES' }
   
   spec.user_target_xcconfig   = { 'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES' }
